@@ -1,0 +1,8 @@
+model,instruct,n_instances,slope,sign,ci_low,ci_high,p_raw,p_holm
+DistilGPT-2,no,5080,0.0149,positive,0.007,0.0229,0.0002,0.0007
+Qwen2.5-0.5B,no,5080,-0.0393,negative,-0.0469,-0.0317,0.0,0.0
+Qwen2.5-0.5B-Instruct,yes,5080,-0.0334,negative,-0.0386,-0.0282,0.0,0.0
+Qwen2.5-7B,no,5080,0.0331,positive,0.0267,0.0395,0.0,0.0
+Qwen2.5-7B-Instruct,yes,5080,0.0122,positive,0.0048,0.0196,0.0013,0.0026
+Llama-3.1-8B,no,5080,0.0147,positive,0.0087,0.0207,0.0,0.0
+Llama-3.1-8B-Instruct,yes,5080,0.0,positive,-0.0067,0.0067,0.9999,0.9999

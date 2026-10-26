@@ -1,0 +1,41 @@
+family,variant,canonical,instruction
+base,0,True,Answer the question.
+base,1,False,Provide an answer to the question.
+base,2,False,Please respond to the question below.
+base,3,False,Give your answer to the following question.
+base,4,False,Respond to the question.
+expert,0,True,You are an expert researcher. Give a precise and correct answer.
+expert,1,False,"As a domain expert, respond precisely and accurately."
+expert,2,False,"Acting as a knowledgeable specialist, provide an accurate answer."
+expert,3,False,You are a careful scientist. Answer with precision and correctness.
+expert,4,False,"As an authority on this topic, give a precise, well-informed answer."
+cot,0,True,Think step by step and then give the final answer.
+cot,1,False,Reason through it step by step before stating the final answer.
+cot,2,False,"Work through the problem one step at a time, then give the answer."
+cot,3,False,"Explain your reasoning step by step, and finish with the answer."
+cot,4,False,"Break the problem into steps, solve each, then state the final answer."
+structured,0,True,"Answer in a clear structure: reasoning first, then final answer."
+structured,1,False,"First explain your reasoning, then give the final answer."
+structured,2,False,"Present your reasoning, followed clearly by the final answer."
+structured,3,False,"Give a structured response: explanation first, conclusion last."
+structured,4,False,"Lay out your reasoning, then clearly mark the final answer."
+concise,0,True,Give only the final answer in one short sentence.
+concise,1,False,Reply with just one short sentence containing the answer.
+concise,2,False,Answer briefly in a single short sentence.
+concise,3,False,"Provide only a short, one-sentence answer."
+concise,4,False,Keep it to one concise sentence with the answer.
+overconstrained,0,True,"Answer with maximum certainty, do not mention uncertainty, and keep the answer extremely short."
+overconstrained,1,False,"Be maximally certain, avoid any hedging, and keep it extremely brief."
+overconstrained,2,False,"Respond with total confidence, no caveats, and as few words as possible."
+overconstrained,3,False,"Give an absolutely certain, hedge-free, very short answer."
+overconstrained,4,False,"Answer with full certainty and extreme brevity, with no qualifiers."
+robust,0,True,"Carefully understand the question, avoid hallucination, reason only from the given information, and provide the final answer."
+robust,1,False,"Read the question carefully, rely only on the given information, avoid making things up, and give the final answer."
+robust,2,False,"Understand the question, use only what is given, do not invent facts, then answer."
+robust,3,False,"Think carefully, ground your answer in the given information only, avoid fabrication, and respond."
+robust,4,False,"Be careful and faithful to the question, do not hallucinate, and answer only from what is provided."
+formatting,0,True,Follow the requested output format exactly and add nothing else.
+formatting,1,False,"Return only what is asked, in the specified format, with no extra text."
+formatting,2,False,Adhere strictly to the required format; do not add explanations.
+formatting,3,False,Output exactly in the requested format and omit any commentary.
+formatting,4,False,"Respond only in the format the question asks for, nothing more."

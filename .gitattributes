@@ -1,0 +1,3 @@
+# Store and check out every file byte-for-byte (no LF/CRLF conversion),
+# so data/SHA256SUMS verifies on Windows, macOS and Linux alike.
+* -text

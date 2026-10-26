@@ -1,0 +1,30 @@
+{
+  "experiment": "Section 5.1 surface-vs-behavioural similarity (corrected)",
+  "host": "Jarvis Labs A100-40GB",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "dtype": "torch.bfloat16",
+  "quantization": "none",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "n_prompts": 16,
+  "n_pairs": 120,
+  "pearson_r": 0.4837,
+  "pearson_p": 0.0,
+  "spearman_r": 0.1441,
+  "spearman_p": 0.1165,
+  "prompt_sim_mean": 0.6944,
+  "output_sim_mean": 0.6712,
+  "versions": {
+    "python": "3.10.20",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.12.1",
+    "sentence_transformers": "5.6.0",
+    "scipy": "1.15.3",
+    "scikit_learn": "1.7.2"
+  },
+  "gpu": "NVIDIA A100-PCIE-40GB"
+}
