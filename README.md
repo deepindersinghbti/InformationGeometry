@@ -20,8 +20,9 @@ experiments/               GPU notebooks that produced data/ (stored outputs = t
 analysis/                  CPU scripts that reproduce every table and statistic from data/
   results/                 the tables they write (committed for comparison)
 figures/                   submitted figure PDFs and the code that draws them (see figures/README.md)
-requirements.txt           CPU analysis + figures
-requirements-experiments.txt   GPU experiments
+requirements.txt           CPU analysis + figures (lower bounds)
+requirements-lock.txt      CPU analysis + figures, exact versions verified to reproduce analysis/results/
+requirements-experiments.txt   GPU experiments (see experiments/ENVIRONMENT.md for the recorded versions)
 LICENSE                    MIT licence (code)
 LICENSE-DATA.md            CC BY 4.0 (data, figures) and upstream model licences
 CITATION.cff               citation metadata
@@ -31,7 +32,7 @@ CITATION.cff               citation metadata
 
 ```bash
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements-lock.txt   # exact versions verified (Python 3.12); or: -r requirements.txt
 python analysis/run_all.py            # about 10 minutes; add --quick for about 4 minutes
 ```
 
@@ -82,7 +83,9 @@ All runs use seed 42. Greedy generations are deterministic on a given GPU, dtype
 
 ## Software
 
-The analysis scripts were checked with Python 3.13, numpy 2.5, pandas 3.0, scipy 1.18, statsmodels 0.15 and scikit-learn 1.9; earlier versions within the ranges in `requirements.txt` gave identical results where tested.
+`python analysis/run_all.py` reproduces every committed table in `analysis/results/` bit-for-bit (largest difference 2.2e-16) with Python 3.12.3 on Linux x86_64 and the exact versions in `requirements-lock.txt` (numpy 2.5.4, pandas 3.1.0, scipy 1.18.1, statsmodels 0.15.0, scikit-learn 1.9.1, sentence-transformers 6.2.0, torch 2.14.1+cpu). `requirements.txt` lists looser lower bounds; other versions within them are expected to give the same tables but have not all been verified.
+
+The GPU experiments ran in different environments (Python 3.10.20 / 3.12.3, torch 2.11.0+cu130 / 2.12.0+cu130). `experiments/ENVIRONMENT.md` lists what each notebook recorded and what was not recorded (transformers version of the main runs, NVIDIA driver).
 
 ## Licence and use
 

@@ -1,4 +1,6 @@
-# CPU-only: analysis/ scripts and figures/ notebooks
+# CPU-only: analysis/ scripts and figures/ notebooks (lower bounds).
+# For the exact versions verified to reproduce analysis/results/ bit-for-bit
+# (Python 3.12.3), use requirements-lock.txt instead.
 numpy>=1.26
 pandas>=2.0
 scipy>=1.11

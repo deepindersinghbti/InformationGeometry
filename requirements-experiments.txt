@@ -5,6 +5,7 @@
 # Recorded runs: Python 3.12.3 + torch 2.12.0+cu130 (RTX 5070) and
 # Python 3.10.20 + torch 2.11.0+cu130 (A100-PCIE-40GB); the Section 5.1 run used
 # transformers 5.12.1 and sentence-transformers 5.6.0 (see its provenance_manifest.json).
+# Full list, and what was not recorded: experiments/ENVIRONMENT.md.
 torch>=2.4
 transformers>=4.45
 accelerate>=0.33
