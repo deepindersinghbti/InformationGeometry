@@ -1,6 +1,6 @@
 # Data
 
-Everything the analyses and figures read. All files are plain CSV/TXT/JSON; `SHA256SUMS` lists a checksum for each one (`sha256sum -c SHA256SUMS` from this folder).
+Everything the analyses and figures read. All files are plain CSV/TXT/JSON; `SHA256SUMS` lists a checksum for each one; verify them with `sh scripts/verify_checksums.sh` from the repository root (or `sha256sum -c SHA256SUMS` from this folder). Checksums are over the LF-terminated files as stored in git; `.gitattributes` forces LF on checkout, so they verify on every OS.
 
 ## `prompts/` — evaluation set and prompt templates
 

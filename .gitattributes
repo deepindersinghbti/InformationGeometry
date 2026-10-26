@@ -1,3 +1,16 @@
-# Store and check out every file byte-for-byte (no LF/CRLF conversion),
-# so data/SHA256SUMS verifies on Windows, macOS and Linux alike.
+# Default: store and check out every file byte-for-byte (no LF/CRLF conversion).
 * -text
+
+# Data and text sources are stored with LF and always checked out with LF, on every OS
+# and regardless of core.autocrlf. data/SHA256SUMS is computed over these LF bytes, so
+# `sha256sum -c` (scripts/verify_checksums.sh) passes on Windows, macOS and Linux.
+# A file accidentally saved with CRLF is normalised back to LF when it is committed.
+data/**/*.csv     text eol=lf
+data/**/*.txt     text eol=lf
+data/**/*.json    text eol=lf
+data/*.md         text eol=lf
+data/SHA256SUMS   text eol=lf
+
+# Binary outputs.
+*.pdf   binary
+*.png   binary
