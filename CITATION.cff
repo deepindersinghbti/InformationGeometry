@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+title: "The Information Geometry of Prompting: code and data"
+type: software
+license: MIT
+repository-code: "https://github.com/deepindersinghbti/InformationGeometry"
+authors:
+  - family-names: Singh
+    given-names: Deepinder
+    affiliation: "Amity School of Engineering and Technology, Amity University Punjab, Mohali, India"
+  - family-names: Bijalwan
+    given-names: Vishwanath
+    affiliation: "Amity School of Engineering and Technology, Amity University Punjab, Mohali, India"
+  - family-names: Khan
+    given-names: Abdul Manan
+    affiliation: "School of Computing and Engineering, University of West London, London, United Kingdom"
+  - family-names: Mohana
+    given-names: Rajni
+    affiliation: "Amity School of Engineering and Technology, Amity University Punjab, Mohali, India"
+  - family-names: Tran
+    given-names: Duc-Tan
+    affiliation: "Faculty of Electrical and Electronic Engineering, Phenikaa University, Hanoi, Vietnam"
+preferred-citation:
+  type: article
+  title: "The Information Geometry of Prompting: A Representation-Sensitivity Account of Prompt Quality Across Language Models"
+  status: submitted
+  authors:
+    - family-names: Singh
+      given-names: Deepinder
+    - family-names: Bijalwan
+      given-names: Vishwanath
+    - family-names: Khan
+      given-names: Abdul Manan
+    - family-names: Mohana
+      given-names: Rajni
+    - family-names: Tran
+      given-names: Duc-Tan

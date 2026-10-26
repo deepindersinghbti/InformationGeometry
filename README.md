@@ -22,6 +22,9 @@ analysis/                  CPU scripts that reproduce every table and statistic 
 figures/                   submitted figure PDFs and the code that draws them (see figures/README.md)
 requirements.txt           CPU analysis + figures
 requirements-experiments.txt   GPU experiments
+LICENSE                    MIT licence (code)
+LICENSE-DATA.md            CC BY 4.0 (data, figures) and upstream model licences
+CITATION.cff               citation metadata
 ```
 
 ## Quick start (CPU only, no model downloads)
@@ -83,8 +86,8 @@ The analysis scripts were checked with Python 3.13, numpy 2.5, pandas 3.0, scipy
 
 ## Licence and use
 
-No licence is granted yet. The repository is shared so that editors and reviewers can evaluate the manuscript; please do not redistribute it before publication. Model outputs in `data/` are also subject to the licences of the models that generated them.
+Code is released under the MIT License (`LICENSE`). Data in `data/` (including the prompts) and the figure files in `figures/pdf/` are released under CC BY 4.0 (`LICENSE-DATA.md`). Model outputs in `data/` are also subject to the licences of the models that generated them: the Llama 3.1 Community License Agreement for the Llama-3.1-8B models and Apache-2.0 for the Qwen2.5 models and DistilGPT-2 (details in `LICENSE-DATA.md`).
 
 ## Citation
 
-If you use this code or data, please cite the manuscript above (full reference to be added on publication).
+If you use this code or data, please cite the manuscript above (full reference to be added on publication). `CITATION.cff` holds the citation metadata (GitHub shows it under "Cite this repository").
