@@ -42,7 +42,7 @@ Off-diagonal entry (*i*, *j*): Jensen–Shannon distance between the mean first-
 
 ### Provenance note: Llama-3.1-8B-Instruct
 
-For six models, the full results, family means and JSD matrix come from the same run of the notebook in `experiments/main_experiment/`. For **Llama-3.1-8B-Instruct** they do not:
+For six models, the full results, family means and JSD matrix come from the same run of the notebook in `experiments/main_experiment/`; for two of them (Qwen2.5-7B-Instruct and Llama-3.1-8B base) that run's executed output was not saved, so no stored notebook output backs their files (see the Models table). For **Llama-3.1-8B-Instruct** the files come from two different runs:
 
 * `full_results/` and `per_family/` come from the A100 bf16 run whose outputs are stored in `experiments/main_experiment/llama_3_1_8b_instruct.ipynb` (22 June 2026).
 * `jsd_matrices/llama_3_1_8b_instruct_jsd_matrix.csv` comes from an earlier run of the same pipeline code (identical dataset, prompt, generation and metric cells) on a local RTX 5070 (12 GB) on 15 June 2026, with the model loaded in **4-bit NF4** quantisation (`LOAD_IN_4BIT = True`). That run's notebook is included as `experiments/main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb`, and the matrix here is byte-identical to the file it wrote.
@@ -71,14 +71,16 @@ The statistics in the paper use full-precision embeddings recomputed from `recur
 
 ## Models
 
-| Model | Hugging Face id | Hardware | Precision |
-|---|---|---|---|
-| DistilGPT-2 | `distilgpt2` | RTX 5070 12 GB | fp32 |
-| Qwen2.5-0.5B | `Qwen/Qwen2.5-0.5B` | RTX 5070 12 GB | bf16 |
-| Qwen2.5-0.5B-Instruct | `Qwen/Qwen2.5-0.5B-Instruct` | RTX 5070 12 GB | bf16 |
-| Qwen2.5-7B | `Qwen/Qwen2.5-7B` | A100-PCIE-40GB | bf16 |
-| Qwen2.5-7B-Instruct | `Qwen/Qwen2.5-7B-Instruct` | A100-PCIE-40GB | bf16 |
-| Llama-3.1-8B | `meta-llama/Llama-3.1-8B` | A100-PCIE-40GB | bf16 |
-| Llama-3.1-8B-Instruct | `meta-llama/Llama-3.1-8B-Instruct` | A100-PCIE-40GB | bf16 (its JSD matrix: RTX 5070, 4-bit NF4; see the note above) |
+| Model | Hugging Face id | Hardware | Precision | Stored executed run |
+|---|---|---|---|---|
+| DistilGPT-2 | `distilgpt2` | RTX 5070 12 GB | **fp32** | yes |
+| Qwen2.5-0.5B | `Qwen/Qwen2.5-0.5B` | RTX 5070 12 GB | bf16 | yes |
+| Qwen2.5-0.5B-Instruct | `Qwen/Qwen2.5-0.5B-Instruct` | RTX 5070 12 GB | bf16 | yes |
+| Qwen2.5-7B | `Qwen/Qwen2.5-7B` | A100-PCIE-40GB | bf16 | yes |
+| Qwen2.5-7B-Instruct | `Qwen/Qwen2.5-7B-Instruct` | A100-PCIE-40GB | bf16 | **no** |
+| Llama-3.1-8B | `meta-llama/Llama-3.1-8B` | A100-PCIE-40GB | bf16 | **no** |
+| Llama-3.1-8B-Instruct | `meta-llama/Llama-3.1-8B-Instruct` | A100-PCIE-40GB | bf16; **its JSD matrix used in the analysis: RTX 5070, 4-bit NF4** (bf16 matrix in `jsd_matrices/supplementary/`; see the note above) | yes (both runs) |
+
+"Stored executed run": whether a notebook in `experiments/main_experiment/` holds the executed output of the run that produced the files. For Qwen2.5-7B-Instruct and Llama-3.1-8B the run was made by switching `MODEL_NAME` in `qwen2_5_7b.ipynb` and `llama_3_1_8b_instruct.ipynb` respectively, but those executions were not saved.
 
 Generated text in this folder is model output; the licence of each model (see its Hugging Face model card, e.g. the Llama 3.1 Community License) also applies to it.

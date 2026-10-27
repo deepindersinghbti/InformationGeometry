@@ -17,6 +17,9 @@ Run:  python analysis/surface_vs_behaviour.py                 (needs sentence-tr
                                                                2-decimal matrices, so values
                                                                are close but not exact)
       add --n-perm 9999 for a fast check
+
+Writes analysis/results/surface_vs_behaviour.csv (one row; `source` records whether the
+full-precision embeddings or the 2-decimal matrices were used).
 """
 
 import argparse
@@ -25,7 +28,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import pearsonr, spearmanr
 
-from common import DATA_DIR, header
+from common import DATA_DIR, header, save_table
 
 SV_DIR = DATA_DIR / "surface_vs_behaviour"
 EMBEDDER = "all-MiniLM-L6-v2"
@@ -81,6 +84,26 @@ def main(from_matrices: bool, n_perm: int, seed: int):
     se = np.sqrt(p_mantel * (1 - p_mantel) / n_perm)
     print(f"Mantel r = {obs:.3f}, two-sided p = {p_mantel:.4f} (MC SE {se:.4f}; "
           f"{n_perm:,} permutations, seed {seed})")
+
+    res = pd.DataFrame([{
+        "source": "saved_2dp_matrices" if from_matrices else f"reembedded_{EMBEDDER}",
+        "n_prompts": n,
+        "n_pairs": len(x),
+        "mean_prompt_cosine": x.mean(),
+        "mean_output_cosine": y.mean(),
+        "pearson_r": r,
+        "pearson_p": p_r,
+        "r_squared": r * r,
+        "spearman_rho": rho,
+        "spearman_p": p_rho,
+        "mantel_r": obs,
+        "mantel_p_two_sided": p_mantel,
+        "mantel_p_mc_se": se,
+        "n_perm": n_perm,
+        "seed": seed,
+    }])
+    path = save_table(res, "surface_vs_behaviour.csv")
+    print(f"\nSaved {path.relative_to(path.parents[2])}")
 
 
 if __name__ == "__main__":
