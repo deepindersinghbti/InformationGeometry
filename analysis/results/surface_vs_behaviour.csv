@@ -1,0 +1,2 @@
+source,n_prompts,n_pairs,mean_prompt_cosine,mean_output_cosine,pearson_r,pearson_p,r_squared,spearman_rho,spearman_p,mantel_r,mantel_p_two_sided,mantel_p_mc_se,n_perm,seed
+reembedded_all-MiniLM-L6-v2,16,120,0.694413434886788,0.6711953705504257,0.48373663191999083,2.1816609791841773e-08,0.2340011290612967,0.14406556010834085,0.11645195049963128,0.4837366319199909,0.060232,0.00023791629364161416,999999,42
