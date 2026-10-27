@@ -12,13 +12,13 @@ data/                      inputs for every analysis and figure (see data/README
   full_results/            one row per instance, 5,080 rows x 7 models
   per_family/              family means, 8 rows x 7 models
   jsd_matrices/            8x8 first-token JSD matrices, 7 models (+ supplementary/)
-  surface_vs_behaviour/    Section 5.1: 16 prompts, model outputs, cosine matrices, manifest
+  surface_vs_behaviour/    Appendix A: 16 prompts, model outputs, cosine matrices, manifest
 experiments/               GPU notebooks that produced data/ (stored outputs = the actual runs)
   main_experiment/         5 notebooks with stored runs for 5 of the 7 checkpoints, plus
-                           the earlier 4-bit NF4 Llama-3.1-8B-Instruct run that produced
-                           its JSD matrix (no stored runs for Qwen2.5-7B-Instruct and
+                           an earlier 4-bit NF4 Llama-3.1-8B-Instruct run (its JSD matrix
+                           is kept as supplementary data; no stored runs for Qwen2.5-7B-Instruct and
                            Llama-3.1-8B base; see "Notes for reviewers")
-  surface_vs_behaviour/    Section 5.1 generation run (Qwen2.5-7B-Instruct)
+  surface_vs_behaviour/    Appendix A generation run (Qwen2.5-7B-Instruct)
 analysis/                  CPU scripts that reproduce every table and statistic from data/
   results/                 the tables they write (committed for comparison)
 figures/                   submitted figure PDFs and the code that draws them (see figures/README.md)
@@ -45,16 +45,16 @@ Each script can also be run on its own, e.g. `python analysis/mixed_effects.py`.
 | Manuscript | Result | Reproduced by |
 |---|---|---|
 | Tables 1–2, §4 | models, prompt families, 127 tasks | `data/README.md`, `data/prompts/` |
-| §5.1, Table 3, Figs. 2–3 | mean prompt / output cosine 0.694 / 0.671; Pearson *r* = 0.484; Spearman ρ = 0.144 (*p* = 0.116); Mantel *p* = 0.060 (999,999 permutations, seed 42) | `analysis/surface_vs_behaviour.py` (→ `results/surface_vs_behaviour.csv`), `figures/notebooks/fig3_similarity_scatter.ipynb` |
-| §5.2, Fig. 4 | per-family PQS; SD across families 1.06→1.30, 0.55→1.46, 0.33→1.85; ranges 0.28 to 5.61 | `analysis/pqs_dispersion.py` |
-| §5.3, Table 4 | ρ(Φ, *s*) per model; base mean +0.19 vs instruct −0.30, exact permutation *p* = 0.23 | `analysis/fisher_fidelity.py` |
-| §5.3, Table 5 | mixed-effects slopes, 95% CIs, Holm-corrected *p* | `analysis/mixed_effects.py` |
-| §5.4, Table 6 | ρ(Φ, PQS⁻ᶠ), *p*, ρ(Φ, PQS), ρ(Φ, *s*), ρ_align | `analysis/fisher_free_pqs.py` |
-| §5.5, Figs. 5–7 | Kendall's *W* = 0.185 (χ² = 9.05, df = 7, *p* = 0.249), mean τ = 0.05; Mantel *r̄* = 0.38, instruct trio 0.82, max 0.91; mean inter-family JSD 0.10 to 0.57 | `analysis/cross_model_agreement.py` |
-| §5.6 | *W* under reweighting 0.228 ± 0.112, PCA weights 0.428; instruct group mean negative 99.8%, below base 99.3%, all three negative 21.3% (5,000 draws, seed 42) | `analysis/pqs_weighting_ablation.py`, `analysis/pqs_f_weighting_robustness.py` |
-| §5.7, Figs. 8–9 | within-pair τ +0.14 / 0.00 / −0.50; SD ratio ×1.2 / ×2.6 / ×5.6; Mantel *r* 0.30 / 0.21 / 0.52 (exact *p* 0.166 / 0.377 / 0.064) | `analysis/pqs_dispersion.py`, `analysis/cross_model_agreement.py`, `figures/scripts/fisher_vs_pqs.py` |
+| Appendix A, Table A1, Figs. A1–A2 | mean prompt / output cosine 0.694 / 0.671; Pearson *r* = 0.484; Spearman ρ = 0.144 (*p* = 0.116); Mantel *p* = 0.060 (999,999 permutations, seed 42) | `analysis/surface_vs_behaviour.py` (→ `results/surface_vs_behaviour.csv`), `figures/notebooks/fig3_similarity_scatter.ipynb` |
+| §5.1, Fig. 2 | per-family PQS; SD across families 1.06→1.30, 0.55→1.46, 0.33→1.85; ranges 0.28 to 5.61 | `analysis/pqs_dispersion.py` |
+| §5.2, Table 3 | ρ(Φ, *s*) per model; base mean +0.19 vs instruct −0.30, exact permutation *p* = 0.23 | `analysis/fisher_fidelity.py` |
+| §5.2, Table 4 | mixed-effects slopes, 95% CIs, Holm-corrected *p* | `analysis/mixed_effects.py` |
+| §5.3, Table 6 | ρ(Φ, PQS⁻ᶠ), *p*, ρ(Φ, PQS), ρ(Φ, *s*), ρ_align | `analysis/fisher_free_pqs.py` |
+| §5.4, Figs. 3–5 | Kendall's *W* = 0.185 (χ² = 9.05, df = 7, *p* = 0.249), mean τ = 0.05; Mantel *r̄* = 0.38, instruct trio 0.84 (0.82 with the NF4 matrix), max 0.91; mean inter-family JSD 0.10 to 0.57 | `analysis/cross_model_agreement.py` |
+| §5.5 | *W* under reweighting 0.228 ± 0.112, PCA weights 0.428; instruct group mean negative 99.8%, below base 99.3%, all three negative 21.3% (5,000 draws, seed 42) | `analysis/pqs_weighting_ablation.py`, `analysis/pqs_f_weighting_robustness.py` |
+| §5.6, Figs. 6–7 | within-pair τ +0.14 / 0.00 / −0.50; SD ratio ×1.2 / ×2.6 / ×5.6; Mantel *r* 0.30 / 0.21 / 0.55 (exact *p* 0.166 / 0.377 / 0.033) | `analysis/pqs_dispersion.py`, `analysis/cross_model_agreement.py`, `figures/scripts/fisher_vs_pqs.py` |
 
-Every script above was re-run from this repository, on the files in `data/`, before release.
+Every script above was re-run from this repository, on the files in `data/`, before release. Section, table and figure numbers refer to the revised manuscript; file names under `figures/` keep the numbering of the first submission (`fig2`/`fig3` are now Figs. A1/A2, and `fig4`–`fig9` are Figs. 2–7).
 
 ## Experiments (GPU)
 
@@ -65,7 +65,7 @@ Every script above was re-run from this repository, on the files in `data/`, bef
 | `main_experiment/qwen2_5_0_5b_instruct.ipynb` | `Qwen/Qwen2.5-0.5B-Instruct` | RTX 5070, 12 GB | bf16 | 1.5 h |
 | `main_experiment/qwen2_5_7b.ipynb` | `Qwen/Qwen2.5-7B` (stored run) and `Qwen/Qwen2.5-7B-Instruct` (**run not stored**) | A100-PCIE-40GB | bf16 | 6.6 h |
 | `main_experiment/llama_3_1_8b_instruct.ipynb` | `meta-llama/Llama-3.1-8B-Instruct` (stored run) and `meta-llama/Llama-3.1-8B` (**run not stored**) | A100-PCIE-40GB | bf16 | 10.6 h |
-| `main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb` | `meta-llama/Llama-3.1-8B-Instruct`, earlier run; source of its JSD matrix used in the paper (only) | RTX 5070, 12 GB | **4-bit NF4** | 5.9 h |
+| `main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb` | `meta-llama/Llama-3.1-8B-Instruct`, earlier run; source of the supplementary NF4 JSD matrix only | RTX 5070, 12 GB | **4-bit NF4** | 5.9 h |
 | `surface_vs_behaviour/surface_vs_behaviour_qwen2_5_7b_instruct.ipynb` | `Qwen/Qwen2.5-7B-Instruct` (16 prompts) | A100-PCIE-40GB | bf16 | minutes |
 
 ```bash
@@ -78,7 +78,7 @@ All runs use seed 42. Greedy generations are deterministic on a given GPU, dtype
 
 ## Notes for reviewers
 
-**Precision and provenance at a glance.** All runs used bf16 with two exceptions: **DistilGPT-2 ran in fp32**, and the **Llama-3.1-8B-Instruct JSD matrix used in the main analysis (Figs. 5–7, every Mantel statistic, mean inter-family JSD) comes from a 4-bit NF4 run**; the bf16 A100 matrix of the same model is in `data/jsd_matrices/supplementary/`, and `analysis/cross_model_agreement.py` reports both (`mantel_pairwise_results_llama_instruct_a100_rerun.csv`). Executed notebooks exist for five checkpoints; **for Qwen2.5-7B-Instruct and Llama-3.1-8B (base) no executed notebook output is stored**, so their CSVs in `data/` cannot be traced to a stored run.
+**Precision and provenance at a glance.** All runs used bf16 except **DistilGPT-2, which ran in fp32**. An earlier **4-bit NF4** run of Llama-3.1-8B-Instruct produced a second JSD matrix; the first submission used it, the revised manuscript uses the bf16 A100 matrix, and the NF4 matrix is kept in `data/jsd_matrices/supplementary/`. `analysis/cross_model_agreement.py` reports both (`mantel_pairwise_results_llama_instruct_nf4.csv`). Executed notebooks exist for five checkpoints; **for Qwen2.5-7B-Instruct and Llama-3.1-8B (base) no executed notebook output is stored**, so their CSVs in `data/` cannot be traced to a stored run.
 
 | Model | Precision of `full_results/`, `per_family/` | Precision of JSD matrix used | Stored executed run |
 |---|---|---|---|
@@ -88,12 +88,12 @@ All runs use seed 42. Greedy generations are deterministic on a given GPU, dtype
 | Qwen2.5-7B | bf16 | bf16 | `qwen2_5_7b.ipynb` |
 | Qwen2.5-7B-Instruct | bf16 | bf16 | **none** |
 | Llama-3.1-8B | bf16 | bf16 | **none** |
-| Llama-3.1-8B-Instruct | bf16 | **4-bit NF4** (bf16 matrix in `supplementary/`) | `llama_3_1_8b_instruct.ipynb` (bf16), `llama_3_1_8b_instruct_rtx5070_nf4.ipynb` (NF4) |
+| Llama-3.1-8B-Instruct | bf16 | bf16 (earlier NF4 matrix in `supplementary/`) | `llama_3_1_8b_instruct.ipynb` (bf16), `llama_3_1_8b_instruct_rtx5070_nf4.ipynb` (NF4) |
 
-* **Llama-3.1-8B-Instruct JSD matrix.** The JSD matrix used in the manuscript for this model comes from an earlier run of the same pipeline on the RTX 5070 in 4-bit NF4 (notebook included), not from the A100 bf16 run that produced the rest of its data. The A100 run's own matrix is included and every affected statistic is printed for both; see `data/README.md`.
-* **DistilGPT-2 precision.** The notebook loads models of this size in full precision, so DistilGPT-2 ran in fp32 (the stored run prints "Loaded fp32 (full precision)"); all other checkpoints ran in bf16, except for the Llama-3.1-8B-Instruct JSD matrix (4-bit NF4, above).
+* **Llama-3.1-8B-Instruct JSD matrix.** The first submission used the JSD matrix from an earlier run of the same pipeline on the RTX 5070 in 4-bit NF4 (notebook included). The revised manuscript uses the matrix from the A100 bf16 run that produced the rest of this model's data. Both matrices are included and every affected statistic is printed for both; see `data/README.md`.
+* **DistilGPT-2 precision.** The notebook loads models of this size in full precision, so DistilGPT-2 ran in fp32 (the stored run prints "Loaded fp32 (full precision)"); all other checkpoints ran in bf16 (apart from the supplementary NF4 matrix, above).
 * **JSD diagonals.** Stored matrices have non-zero diagonals (mean within-family distance). No statistic uses them; the analysis code sets them to zero.
-* **Permutation p-values.** With 8 families, Mantel *p*-values are exact (all 8! = 40,320 relabellings); the Monte-Carlo values (9,999 permutations) are printed alongside. Section 5.1 has 16 prompts, so its Mantel test is Monte Carlo and the third decimal depends on the seed; the count and seed are fixed in the code. The §5.6 percentages at 5,000 draws vary in the first decimal with the seed; `pqs_f_weighting_robustness.py` also prints 200,000-draw values.
+* **Permutation p-values.** With 8 families, Mantel *p*-values are exact (all 8! = 40,320 relabellings); the Monte-Carlo values (9,999 permutations) are printed alongside. Appendix A has 16 prompts, so its Mantel test is Monte Carlo and the third decimal depends on the seed; the count and seed are fixed in the code. The §5.5 percentages at 5,000 draws vary in the first decimal with the seed; `pqs_f_weighting_robustness.py` also prints 200,000-draw values.
 
 ## Software
 

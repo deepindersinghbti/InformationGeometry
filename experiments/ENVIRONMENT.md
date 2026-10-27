@@ -12,10 +12,10 @@ marked *not recorded*.
 | `main_experiment/qwen2_5_0_5b_instruct.ipynb` | `Qwen/Qwen2.5-0.5B-Instruct` | 3.12.3 | 2.12.0+cu130 (13.0) | not recorded | RTX 5070 12 GB | bf16 |
 | `main_experiment/qwen2_5_7b.ipynb` | `Qwen/Qwen2.5-7B` | 3.10.20 | 2.11.0+cu130 (13.0) | not recorded | A100-PCIE-40GB | bf16 |
 | `main_experiment/llama_3_1_8b_instruct.ipynb` | `meta-llama/Llama-3.1-8B-Instruct` | 3.10.20 | 2.11.0+cu130 (13.0) | not recorded | A100-PCIE-40GB | bf16 |
-| `main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb` | `meta-llama/Llama-3.1-8B-Instruct` (source of its JSD matrix only) | 3.12.3 | 2.12.0+cu130 (13.0) | not recorded | RTX 5070 12 GB | 4-bit NF4 (bitsandbytes; version not recorded) |
+| `main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb` | `meta-llama/Llama-3.1-8B-Instruct` (source of the supplementary NF4 JSD matrix only) | 3.12.3 | 2.12.0+cu130 (13.0) | not recorded | RTX 5070 12 GB | 4-bit NF4 (bitsandbytes; version not recorded) |
 | `surface_vs_behaviour/surface_vs_behaviour_qwen2_5_7b_instruct.ipynb` | `Qwen/Qwen2.5-7B-Instruct` (16 prompts) | 3.10.20 | 2.11.0+cu130 | 5.12.1 | A100-PCIE-40GB | bf16 |
 
-Section 5.1 run also records sentence-transformers 5.6.0, scipy 1.15.3, scikit-learn 1.7.2.
+Appendix A run also records sentence-transformers 5.6.0, scipy 1.15.3, scikit-learn 1.7.2.
 
 **No stored run.** According to the main README, the data for `Qwen/Qwen2.5-7B-Instruct` and `meta-llama/Llama-3.1-8B`
 (base) in `data/` were produced by the `qwen2_5_7b.ipynb` and `llama_3_1_8b_instruct.ipynb`

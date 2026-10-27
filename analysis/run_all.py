@@ -2,9 +2,9 @@
 
     python analysis/run_all.py           # full run, about 10 minutes on a laptop CPU
     python analysis/run_all.py --quick   # 5,000-draw robustness only, 9,999-permutation
-                                         # Mantel test for Section 5.1 (about 4 minutes)
+                                         # Mantel test for Appendix A (about 4 minutes)
 
-Section 5.1 needs sentence-transformers and a one-off download of all-MiniLM-L6-v2.
+Appendix A needs sentence-transformers and a one-off download of all-MiniLM-L6-v2.
 If that package is missing, the script falls back to the saved 2-decimal matrices and
 says so.
 """
@@ -33,7 +33,7 @@ def main(quick: bool):
     run("pqs_f_weighting_robustness.py", *(["--quick"] if quick else []))
     sv_args = ["--n-perm", "9999"] if quick else []
     if importlib.util.find_spec("sentence_transformers") is None:
-        print("\nsentence-transformers not installed: Section 5.1 uses the saved 2-decimal "
+        print("\nsentence-transformers not installed: Appendix A uses the saved 2-decimal "
               "matrices (values close to, but not exactly, the paper's).")
         sv_args.append("--from-matrices")
     run("surface_vs_behaviour.py", *sv_args)

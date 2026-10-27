@@ -45,12 +45,12 @@ Off-diagonal entry (*i*, *j*): Jensen–Shannon distance between the mean first-
 For six models, the full results, family means and JSD matrix come from the same run of the notebook in `experiments/main_experiment/`; for two of them (Qwen2.5-7B-Instruct and Llama-3.1-8B base) that run's executed output was not saved, so no stored notebook output backs their files (see the Models table). For **Llama-3.1-8B-Instruct** the files come from two different runs:
 
 * `full_results/` and `per_family/` come from the A100 bf16 run whose outputs are stored in `experiments/main_experiment/llama_3_1_8b_instruct.ipynb` (22 June 2026).
-* `jsd_matrices/llama_3_1_8b_instruct_jsd_matrix.csv` comes from an earlier run of the same pipeline code (identical dataset, prompt, generation and metric cells) on a local RTX 5070 (12 GB) on 15 June 2026, with the model loaded in **4-bit NF4** quantisation (`LOAD_IN_4BIT = True`). That run's notebook is included as `experiments/main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb`, and the matrix here is byte-identical to the file it wrote.
-* `jsd_matrices/supplementary/llama_3_1_8b_instruct_jsd_matrix_a100_bf16_rerun.csv` is the JSD matrix from the A100 bf16 run itself.
+* `jsd_matrices/llama_3_1_8b_instruct_jsd_matrix.csv` is the JSD matrix from the A100 bf16 run itself. The revised manuscript uses this matrix.
+* `jsd_matrices/supplementary/llama_3_1_8b_instruct_jsd_matrix_rtx5070_nf4.csv` comes from an earlier run of the same pipeline code (identical dataset, prompt, generation and metric cells) on a local RTX 5070 (12 GB) on 15 June 2026, with the model loaded in **4-bit NF4** quantisation (`LOAD_IN_4BIT = True`). That run's notebook is included as `experiments/main_experiment/llama_3_1_8b_instruct_rtx5070_nf4.ipynb`, and the matrix here is byte-identical to the file it wrote.
 
-The JSD heatmaps, MDS manifolds, Mantel statistics and mean inter-family distances in the manuscript use the first of the two matrices. `analysis/cross_model_agreement.py` prints every Mantel statistic for both. With the A100 bf16 matrix:
+The first submission used the NF4 matrix; the revised manuscript uses the bf16 matrix for the JSD heatmaps, MDS manifolds, Mantel statistics and mean inter-family distances. `analysis/cross_model_agreement.py` prints every Mantel statistic for both:
 
-| Quantity | Manuscript matrix | A100 bf16 rerun matrix |
+| Quantity | Earlier NF4 matrix | A100 bf16 matrix (used) |
 |---|---|---|
 | Mean inter-family JSD, Llama-3.1-8B-Instruct | 0.49 | 0.50 |
 | Mantel *r*, Llama-3.1-8B vs Instruct (exact *p*) | 0.52 (0.064) | 0.55 (0.033) |
@@ -59,13 +59,13 @@ The JSD heatmaps, MDS manifolds, Mantel statistics and mean inter-family distanc
 | Mean Mantel *r*, instruction-tuned trio | 0.82 | 0.84 |
 | Mean Mantel *r*, all 21 pairs | 0.38 | 0.38 |
 
-## `surface_vs_behaviour/` — Section 5.1 preliminary experiment
+## `surface_vs_behaviour/` — Appendix A preliminary experiment
 
 | File | Contents |
 |---|---|
 | `recursion_real_outputs.csv` | the 16 prompts (`prompt_id`, `category`, `prompt_text`) and Qwen2.5-7B-Instruct's greedy outputs (`output_text`, up to 512 new tokens) |
 | `provenance_manifest.json` | model, dtype (bf16), decoding settings, embedder, headline statistics, library versions and GPU of that run |
-| `prompt_similarities.txt`, `output_similarities.txt` | the two 16 × 16 cosine matrices, rounded to 2 decimals (as printed in Fig. 2) |
+| `prompt_similarities.txt`, `output_similarities.txt` | the two 16 × 16 cosine matrices, rounded to 2 decimals (as printed in Fig. A1) |
 
 The statistics in the paper use full-precision embeddings recomputed from `recursion_real_outputs.csv`; the 2-decimal matrices reproduce them only approximately (Pearson *r* 0.4875 vs 0.4837).
 
@@ -79,7 +79,7 @@ The statistics in the paper use full-precision embeddings recomputed from `recur
 | Qwen2.5-7B | `Qwen/Qwen2.5-7B` | A100-PCIE-40GB | bf16 | yes |
 | Qwen2.5-7B-Instruct | `Qwen/Qwen2.5-7B-Instruct` | A100-PCIE-40GB | bf16 | **no** |
 | Llama-3.1-8B | `meta-llama/Llama-3.1-8B` | A100-PCIE-40GB | bf16 | **no** |
-| Llama-3.1-8B-Instruct | `meta-llama/Llama-3.1-8B-Instruct` | A100-PCIE-40GB | bf16; **its JSD matrix used in the analysis: RTX 5070, 4-bit NF4** (bf16 matrix in `jsd_matrices/supplementary/`; see the note above) | yes (both runs) |
+| Llama-3.1-8B-Instruct | `meta-llama/Llama-3.1-8B-Instruct` | A100-PCIE-40GB | bf16 (an earlier RTX 5070 4-bit NF4 JSD matrix is in `jsd_matrices/supplementary/`; see the note above) | yes (both runs) |
 
 "Stored executed run": whether a notebook in `experiments/main_experiment/` holds the executed output of the run that produced the files. For Qwen2.5-7B-Instruct and Llama-3.1-8B the run was made by switching `MODEL_NAME` in `qwen2_5_7b.ipynb` and `llama_3_1_8b_instruct.ipynb` respectively, but those executions were not saved.
 

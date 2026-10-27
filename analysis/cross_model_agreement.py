@@ -13,8 +13,9 @@ Mantel part (8x8 first-token JSD matrices, strict upper triangle, diagonal unuse
       base/instruct pairs, and each model's mean between-family JSD.
 
 The Mantel section is printed twice: once with the JSD matrices used in the manuscript
-and once replacing Llama-3.1-8B-Instruct with the matrix from its A100 bf16 rerun
-(data/jsd_matrices/supplementary/). See data/README.md for why both exist.
+(all from the bf16/fp32 runs) and once replacing Llama-3.1-8B-Instruct with the matrix from
+an earlier 4-bit NF4 run of the same pipeline (data/jsd_matrices/supplementary/), which an
+earlier draft of the manuscript used. See data/README.md.
 
 Run:  python analysis/cross_model_agreement.py
 """
@@ -153,13 +154,13 @@ def main():
     mantel_section(paper, "JSD matrices used in the manuscript", "mantel_pairwise_results.csv")
 
     rerun_path = (DATA_DIR / "jsd_matrices" / "supplementary"
-                  / "llama_3_1_8b_instruct_jsd_matrix_a100_bf16_rerun.csv")
+                  / "llama_3_1_8b_instruct_jsd_matrix_rtx5070_nf4.csv")
     rerun = pd.read_csv(rerun_path, index_col=0).values.astype(float)
     np.fill_diagonal(rerun, 0.0)
     alt = dict(paper)
     alt["Llama-3.1-8B-Instruct"] = rerun
-    mantel_section(alt, "Llama-3.1-8B-Instruct replaced by its A100 bf16 rerun",
-                   "mantel_pairwise_results_llama_instruct_a100_rerun.csv")
+    mantel_section(alt, "Llama-3.1-8B-Instruct replaced by its earlier 4-bit NF4 run",
+                   "mantel_pairwise_results_llama_instruct_nf4.csv")
 
 
 if __name__ == "__main__":
