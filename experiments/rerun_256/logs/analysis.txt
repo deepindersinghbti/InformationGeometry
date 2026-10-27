@@ -1,0 +1,60 @@
+                model          family  pct_capped_64  pct_capped_256  s_64  s_256  rouge_l_64  rouge_l_256 em_arith_64 em_arith_256 em_factual_64 em_factual_256  PQS_64  PQS_256  PQS_F_64  PQS_F_256
+          DistilGPT-2            base        100.000         100.000 0.477  0.439       0.141        0.043    6.666667          2.5      5.217391       5.217391   0.096    0.113     0.161      0.179
+          DistilGPT-2          expert        100.000         100.000 0.485  0.445       0.141        0.042    0.833333     3.333333      4.347826       4.347826   0.115    0.119     0.024      0.029
+          DistilGPT-2             cot        100.000         100.000 0.479  0.441       0.141        0.043    4.166667          0.0       1.73913        1.73913  -0.016   -0.004     0.056      0.069
+          DistilGPT-2      structured        100.000         100.000 0.477  0.440       0.141        0.042         2.5          2.5      3.478261       3.478261  -0.004    0.032    -0.206     -0.170
+          DistilGPT-2         concise        100.000         100.000 0.482  0.443       0.146        0.044         2.5          2.5      4.347826       4.347826   0.103    0.107     0.236      0.239
+          DistilGPT-2 overconstrained        100.000         100.000 0.477  0.434       0.137        0.041         2.5     0.833333      4.347826       4.347826  -0.164   -0.181    -0.257     -0.274
+          DistilGPT-2          robust        100.000         100.000 0.483  0.439       0.139        0.042         5.0     1.666667      3.478261       3.478261  -0.060   -0.085    -0.010     -0.036
+          DistilGPT-2      formatting        100.000         100.000 0.485  0.440       0.140        0.042    1.666667     0.833333      2.608696       2.608696  -0.070   -0.100    -0.005     -0.035
+         Qwen2.5-0.5B            base         24.252          10.394 0.633  0.620       0.331        0.314   69.166667    64.166667     84.347826      82.608696  -1.001   -1.001    -0.605     -0.605
+         Qwen2.5-0.5B          expert         25.669          10.709 0.674  0.667       0.372        0.358   68.333333    73.333333     85.217391      85.217391  -0.205   -0.241    -0.023     -0.059
+         Qwen2.5-0.5B             cot         61.417          18.583 0.595  0.586       0.242        0.199   46.666667    60.833333          80.0      80.869565  -0.128   -0.230    -0.208     -0.311
+         Qwen2.5-0.5B      structured         54.331          17.638 0.634  0.626       0.271        0.238   45.833333         72.5     83.478261      86.956522  -0.290   -0.350    -0.300     -0.360
+         Qwen2.5-0.5B         concise          0.000           0.000 0.768  0.767       0.567        0.568        70.0    70.833333      81.73913       81.73913   2.497    2.606     1.817      1.926
+         Qwen2.5-0.5B overconstrained         13.701           4.724 0.682  0.682       0.416        0.412   85.833333         82.5          80.0      80.869565  -0.394   -0.347    -0.223     -0.176
+         Qwen2.5-0.5B          robust         35.433          13.858 0.646  0.631       0.323        0.304   63.333333    60.833333      81.73913      86.956522  -0.614   -0.643    -0.411     -0.440
+         Qwen2.5-0.5B      formatting         16.850           7.559 0.691  0.689       0.419        0.410        77.5    79.166667     86.086957      85.217391   0.135    0.207    -0.047      0.025
+Qwen2.5-0.5B-Instruct            base         40.472           2.835 0.726  0.732       0.350        0.336   29.166667         77.5     86.956522      87.826087   0.079    0.040     0.352      0.313
+Qwen2.5-0.5B-Instruct          expert         48.031           3.937 0.708  0.718       0.315        0.305   18.333333    74.166667     87.826087      87.826087  -0.565   -0.566    -0.166     -0.168
+Qwen2.5-0.5B-Instruct             cot         72.126          14.803 0.628  0.651       0.230        0.194   13.333333         70.0      58.26087      88.695652  -1.706   -1.754    -1.331     -1.379
+Qwen2.5-0.5B-Instruct      structured         66.929           7.559 0.658  0.677       0.249        0.223   10.833333    71.666667     76.521739      89.565217  -1.503   -1.512    -1.175     -1.184
+Qwen2.5-0.5B-Instruct         concise          0.157           0.000 0.770  0.770       0.506        0.505   69.166667         70.0      81.73913      80.869565   1.668    1.615     1.314      1.261
+Qwen2.5-0.5B-Instruct overconstrained          2.362           0.000 0.734  0.737       0.484        0.489   70.833333         75.0      81.73913       81.73913   1.217    1.217     0.529      0.530
+Qwen2.5-0.5B-Instruct          robust         44.882           4.567 0.693  0.712       0.343        0.334   16.666667    70.833333          80.0      85.217391  -0.506   -0.345    -0.420     -0.258
+Qwen2.5-0.5B-Instruct      formatting         11.496           0.630 0.749  0.754       0.469        0.465   46.666667         75.0     86.086957      86.086957   1.316    1.304     0.897      0.885
+                model        budget                                                                               by_s                                                                         by_em_both                                                                        by_em_arith                                                                             by_PQS                                                                           by_PQS_F
+          DistilGPT-2 64 (original) expert > formatting > robust > concise > cot > overconstrained > base > structured base > robust > concise > overconstrained > cot > structured > expert > formatting base > robust > cot > structured > concise > overconstrained > formatting > expert expert > concise > base > structured > cot > robust > formatting > overconstrained concise > base > cot > expert > formatting > robust > structured > overconstrained
+          DistilGPT-2   256 (rerun) expert > concise > cot > formatting > structured > base > robust > overconstrained base > expert > concise > structured > robust > overconstrained > formatting > cot expert > base > structured > concise > robust > overconstrained > formatting > cot expert > base > concise > structured > cot > robust > formatting > overconstrained concise > base > cot > expert > formatting > robust > structured > overconstrained
+         Qwen2.5-0.5B 64 (original) concise > formatting > overconstrained > expert > robust > structured > base > cot overconstrained > formatting > base > expert > concise > robust > structured > cot overconstrained > formatting > concise > base > expert > robust > cot > structured concise > formatting > cot > expert > structured > overconstrained > robust > base concise > expert > formatting > cot > overconstrained > structured > robust > base
+         Qwen2.5-0.5B   256 (rerun) concise > formatting > overconstrained > expert > robust > structured > base > cot formatting > overconstrained > structured > expert > concise > robust > base > cot overconstrained > formatting > expert > structured > concise > base > cot > robust concise > formatting > cot > expert > overconstrained > structured > robust > base concise > formatting > expert > overconstrained > cot > structured > robust > base
+Qwen2.5-0.5B-Instruct 64 (original) concise > formatting > overconstrained > base > expert > robust > structured > cot overconstrained > concise > formatting > base > expert > robust > structured > cot overconstrained > concise > formatting > base > expert > robust > cot > structured concise > formatting > overconstrained > base > robust > expert > structured > cot concise > formatting > overconstrained > base > expert > robust > structured > cot
+Qwen2.5-0.5B-Instruct   256 (rerun) concise > formatting > overconstrained > base > expert > robust > structured > cot base > expert > structured > formatting > cot > overconstrained > robust > concise base > overconstrained > formatting > expert > structured > robust > cot > concise concise > formatting > overconstrained > base > robust > expert > structured > cot concise > formatting > overconstrained > base > expert > robust > structured > cot
+                                         0                1                2             3                      4                      5
+model                          DistilGPT-2      DistilGPT-2     Qwen2.5-0.5B  Qwen2.5-0.5B  Qwen2.5-0.5B-Instruct  Qwen2.5-0.5B-Instruct
+budget                       64 (original)      256 (rerun)    64 (original)   256 (rerun)          64 (original)            256 (rerun)
+overall_pct_capped                   100.0            100.0          28.9567       10.4331                35.8071                 4.2913
+rho_phi_s                           0.1905           0.4048             -0.5          -0.5                -0.7143                -0.7143
+p_phi_s                             0.6514           0.3199            0.207         0.207                 0.0465                 0.0465
+rho_phi_em                          0.1928          -0.0843           0.1198       -0.3095                -0.7857                 0.4791
+p_phi_em                            0.6474           0.8426           0.7776        0.4556                 0.0208                 0.2297
+rho_phi_pqsF                         0.881            0.881          -0.7381       -0.7857                -0.7143                -0.7143
+p_phi_pqsF                          0.0039           0.0039           0.0366        0.0208                 0.0465                 0.0465
+rho_phi_pqs                         0.2619           0.2143          -0.9286       -0.9048                -0.8095                -0.8095
+mixed_s_slope                       0.0149           0.0118          -0.0393       -0.0434                -0.0334                -0.0282
+mixed_s_ci_low                       0.007           0.0043          -0.0469       -0.0513                -0.0386                 -0.033
+mixed_s_ci_high                     0.0229           0.0192          -0.0317       -0.0355                -0.0282                -0.0233
+mixed_s_p                           0.0002            0.002              0.0           0.0                    0.0                    0.0
+mixed_em_slope                      0.0036          -0.0042           0.0046        0.0059                -0.0965                 0.0236
+mixed_em_p                          0.6787           0.5946           0.6436        0.5379                    0.0                 0.0033
+mixed_em_n                            1880             1880             1880          1880                   1880                   1880
+top_PQS                             expert           expert          concise       concise                concise                concise
+bottom_PQS                 overconstrained  overconstrained             base          base                    cot                    cot
+top_s                               expert           expert          concise       concise                concise                concise
+bottom_s                        structured  overconstrained              cot           cot                    cot                    cot
+top_em                                base             base  overconstrained    formatting        overconstrained                   base
+bottom_em                       formatting              cot              cot           cot                    cot                concise
+kendall_64_vs_256_s                    NaN           0.3571              NaN           1.0                    NaN                    1.0
+kendall_64_vs_256_em_both              NaN           0.2308              NaN        0.4728                    NaN                -0.1091
+kendall_64_vs_256_PQS                  NaN           0.9286              NaN        0.9286                    NaN                    1.0
+kendall_64_vs_256_PQS_F                NaN              1.0              NaN        0.8571                    NaN                    1.0

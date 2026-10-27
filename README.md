@@ -19,6 +19,8 @@ experiments/               GPU notebooks that produced data/ (stored outputs = t
                            is kept as supplementary data; no stored runs for Qwen2.5-7B-Instruct and
                            Llama-3.1-8B base; see "Notes for reviewers")
   surface_vs_behaviour/    Appendix A generation run (Qwen2.5-7B-Instruct)
+  rerun_256/               generation-length check: greedy re-run at 256 new tokens with
+                           exact-match scoring (3 small models done; 7B/8B script ready)
 analysis/                  CPU scripts that reproduce every table and statistic from data/
   results/                 the tables they write (committed for comparison)
 figures/                   submitted figure PDFs and the code that draws them (see figures/README.md)

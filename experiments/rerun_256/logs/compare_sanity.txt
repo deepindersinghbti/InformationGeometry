@@ -1,0 +1,12 @@
+rerun64 bs1 vs original: n=100 identical text 70.0% | |ds| mean 0.0162 max 0.5935 | |s diff|<1e-4: 70.0% | |dROUGE| mean 0.0166
+    differing: 30; common prefix chars median 50; families {'cot': 7, 'structured': 5, 'expert': 5, 'concise': 4, 'robust': 3, 'base': 3, 'overconstrained': 2, 'formatting': 1}
+rerun64 bs32 vs original: n=100 identical text 71.0% | |ds| mean 0.0123 max 0.2181 | |s diff|<1e-4: 71.0% | |dROUGE| mean 0.0109
+    differing: 29; common prefix chars median 44; families {'cot': 7, 'structured': 5, 'expert': 5, 'robust': 4, 'overconstrained': 3, 'concise': 2, 'base': 2, 'formatting': 1}
+rerun64 bs1 vs rerun64 bs32: n=100 identical text 66.0% | |ds| mean 0.0196 max 0.6706 | |s diff|<1e-4: 66.0% | |dROUGE| mean 0.0145
+    answer-score agreement 97.3% (n=37)
+    differing: 34; common prefix chars median 76; families {'cot': 9, 'structured': 6, 'robust': 6, 'expert': 4, 'concise': 3, 'overconstrained': 3, 'base': 3}
+rerun256 bs1 vs rerun256 bs32: n=100 identical text 58.0% | |ds| mean 0.0196 max 0.6706 | |s diff|<1e-4: 58.0% | |dROUGE| mean 0.0152
+    answer-score agreement 91.9% (n=37)
+    differing: 42; common prefix chars median 98; families {'cot': 10, 'structured': 9, 'expert': 7, 'robust': 6, 'base': 4, 'concise': 3, 'overconstrained': 3}
+rerun64 output is a prefix of rerun256 output (same bs=1): 100.0%
+capped proxy (retok>=60) vs exact hit_cap at 64: agreement 100.0% (exact capped 31.0%, proxy 31.0%)

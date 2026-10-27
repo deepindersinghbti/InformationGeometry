@@ -21,3 +21,4 @@ desktop.ini
 # Secrets
 .env
 *.token
+experiments/rerun_256/results/*_scored.csv
